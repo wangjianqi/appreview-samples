@@ -10,13 +10,14 @@ These files are also used by Apple App Review to verify the app's functionality.
 |-----------|--------|------------|-------|----------|-------------|
 | `ios/` | iPhone | 1290×2796 | HEVC | ~42s | iPhone screen recording for testing iPhone/iPad device presets and auto-processing |
 | `mac/` | Mac | 1920×1050 | H.264 | ~59s | Mac screen recording for testing Mac device presets and manual trimming |
-| `ipad/` | iPad | — | — | — | Coming soon |
+| `ipad/` | iPad (A16) | 1640×2360 | H.264 | ~46s | iPad Simulator screen recording for testing iPad device presets |
 
 ## Download
 
 Download from [GitHub Releases](https://github.com/wangjianqi/appreview-samples/releases/latest):
 
 - [ios-sample.mp4](https://github.com/wangjianqi/appreview-samples/releases/latest/download/ios-sample.mp4)
+- [ipad-sample.mp4](https://github.com/wangjianqi/appreview-samples/releases/latest/download/ipad-sample.mp4)
 - [mac-sample.mp4](https://github.com/wangjianqi/appreview-samples/releases/latest/download/mac-sample.mp4)
 
 ## How to Use with AppPreview Cutter
