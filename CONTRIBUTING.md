@@ -6,13 +6,37 @@ Guidelines for adding new sample videos to this repository.
 
 ```
 appreview-samples/
-├── ios/        # iPhone screen recordings
-├── ipad/       # iPad screen recordings
-├── mac/        # Mac screen recordings
-└── README.md
+├── ios/                # iPhone screen recordings
+│   └── iphone-sample.mp4
+├── ipad/               # iPad screen recordings
+│   └── ipad-sample.mp4
+├── mac/                # Mac screen recordings
+│   └── mac-sample.mp4
+├── README.md
+└── CONTRIBUTING.md
 ```
 
 Each device category has its own directory. Place new recordings in the appropriate directory.
+
+## File Naming Convention
+
+All sample video files follow a unified naming format:
+
+```
+{device}-sample.mp4
+```
+
+| Device | Directory | Filename |
+|--------|-----------|----------|
+| iPhone | `ios/` | `iphone-sample.mp4` |
+| iPad | `ipad/` | `ipad-sample.mp4` |
+| Mac | `mac/` | `mac-sample.mp4` |
+
+Rules:
+- Use **lowercase** letters and hyphens only
+- Always use `.mp4` extension (convert from `.mov` if needed)
+- One sample file per device category — replace the existing file when updating
+- The filename in the repo and the release asset name must match
 
 ## Adding a New Sample Video
 
@@ -21,25 +45,22 @@ Each device category has its own directory. Place new recordings in the appropri
 - **iPhone/iPad**: Settings → Control Center → add Screen Recording, then record from Control Center
 - **Mac**: Use QuickTime Player → File → New Screen Recording, or press `Cmd + Shift + 5`
 
-### 2. Place the File
+### 2. Convert to MP4 (if needed)
 
-Move the recording to the corresponding directory:
+If the recording is in `.mov` format, convert it:
 
-| Device | Directory | Target Resolution for AppPreview Cutter |
-|--------|-----------|----------------------------------------|
-| iPhone | `ios/` | 886×1920 (portrait) |
-| iPad | `ipad/` | 1200×1600 (portrait) |
-| Mac | `mac/` | 1920×1080 (landscape) |
+```bash
+ffmpeg -i input.mov -c:v libx264 -crf 23 -preset medium -c:a aac -b:a 256k output.mp4
+```
 
-### 3. File Naming Convention
+### 3. Place and Rename the File
 
-Keep the original filename from the screen recording. This helps identify the device and recording date:
+Move the recording to the corresponding directory with the standard name:
 
-- iOS: `ScreenRecording_MM-DD-YYYY HH-MM-SS.mp4`
-- iPad: `ScreenRecording_MM-DD-YYYY HH-MM-SS.mp4`
-- Mac: `YYYY-MM-DD HH.MM.SS.mp4`
-
-If there are multiple files in the same directory, keep the original names to avoid confusion.
+```bash
+# Example: replacing the iPad sample
+cp your-recording.mp4 ipad/ipad-sample.mp4
+```
 
 ### 4. File Size Limit
 
@@ -55,30 +76,22 @@ GitHub has a **100 MB** file size limit per file. If your recording exceeds this
 ### 5. Commit and Push
 
 ```bash
-git add ipad/your-new-recording.mp4
-git commit -m "Add iPad screen recording sample"
+git add ipad/ipad-sample.mp4
+git commit -m "Update iPad screen recording sample"
 git push origin main
 ```
 
 ### 6. Update GitHub Release
 
-After pushing a new sample file, update the release assets:
+After pushing, update the release assets to match:
 
 ```bash
-# Copy and rename the file for the release
-cp ipad/your-recording.mp4 /tmp/ipad-sample.mp4
+# Delete the old asset
+gh release delete-asset v1.0.0 ipad-sample.mp4
 
-# Upload to the existing release
-gh release upload v1.0.0 /tmp/ipad-sample.mp4
+# Upload the new one
+gh release upload v1.0.0 ipad/ipad-sample.mp4
 ```
-
-Release asset naming convention:
-
-| Device | Release Asset Name |
-|--------|--------------------|
-| iPhone | `ios-sample.mp4` |
-| iPad | `ipad-sample.mp4` |
-| Mac | `mac-sample.mp4` |
 
 ### 7. Update README
 
@@ -86,7 +99,7 @@ Update the sample files table in `README.md` with the new file's information:
 
 ```bash
 # Get video info
-ffprobe -v quiet -print_format json -show_format -show_streams your-recording.mp4
+ffprobe -v quiet -print_format json -show_format -show_streams ipad/ipad-sample.mp4
 ```
 
 ## Recording Tips

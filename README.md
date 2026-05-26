@@ -6,17 +6,17 @@ These files are also used by Apple App Review to verify the app's functionality.
 
 ## Sample Files
 
-| Directory | Device | Resolution | Codec | Duration | Description |
-|-----------|--------|------------|-------|----------|-------------|
-| `ios/` | iPhone | 1290×2796 | HEVC | ~42s | iPhone screen recording for testing iPhone/iPad device presets and auto-processing |
-| `mac/` | Mac | 1920×1050 | H.264 | ~59s | Mac screen recording for testing Mac device presets and manual trimming |
-| `ipad/` | iPad (A16) | 1640×2360 | H.264 | ~46s | iPad Simulator screen recording for testing iPad device presets |
+| File | Device | Resolution | Codec | Duration | Description |
+|------|--------|------------|-------|----------|-------------|
+| `ios/iphone-sample.mp4` | iPhone | 1290×2796 | HEVC | ~42s | iPhone screen recording for testing iPhone device presets and auto-processing |
+| `ipad/ipad-sample.mp4` | iPad (A16) | 1640×2360 | H.264 | ~46s | iPad Simulator screen recording for testing iPad device presets |
+| `mac/mac-sample.mp4` | Mac | 1920×1050 | H.264 | ~59s | Mac screen recording for testing Mac device presets and manual trimming |
 
 ## Download
 
 Download from [GitHub Releases](https://github.com/wangjianqi/appreview-samples/releases/latest):
 
-- [ios-sample.mp4](https://github.com/wangjianqi/appreview-samples/releases/latest/download/ios-sample.mp4)
+- [iphone-sample.mp4](https://github.com/wangjianqi/appreview-samples/releases/latest/download/iphone-sample.mp4)
 - [ipad-sample.mp4](https://github.com/wangjianqi/appreview-samples/releases/latest/download/ipad-sample.mp4)
 - [mac-sample.mp4](https://github.com/wangjianqi/appreview-samples/releases/latest/download/mac-sample.mp4)
 
